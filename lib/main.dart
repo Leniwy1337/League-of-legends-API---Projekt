@@ -16,7 +16,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'League of Legends API',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF0A1428), // Ciemny granat
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF091428),
+          elevation: 0,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            color: Color(0xFFC8AA6E), // Złoty
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          iconTheme: IconThemeData(color: Color(0xFFC8AA6E)),
+        ),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFFC8AA6E),
+          surface: Color(0xFF1E2328), // Tło dla kart
+        ),
         useMaterial3: true,
       ),
       home: const ChampionsScreen(),

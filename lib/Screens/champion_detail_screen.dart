@@ -9,9 +9,7 @@ class ChampionDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(champion.name),
-      ),
+      appBar: AppBar(title: Text(champion.name)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -23,13 +21,22 @@ class ChampionDetailScreen extends StatelessWidget {
                 height: 150,
                 width: 150,
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100),
+                errorBuilder: (context, error, stackTrace) => Container(
+                  height: 150,
+                  width: 150,
+                  color: Colors.grey[800],
+                  child: const Icon(Icons.person, size: 80, color: Colors.grey),
+                ),
               ),
             ),
             const SizedBox(height: 24),
             Text(
               champion.title.toUpperCase(),
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
             ),
             const SizedBox(height: 8),
             Text(

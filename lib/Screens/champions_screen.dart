@@ -110,10 +110,21 @@ class ChampionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
         onTap: onTap,
-        leading: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          backgroundImage: NetworkImage(champion.imageUrl),
-          onBackgroundImageError: (exception, stackTrace) {},
+        leading: ClipOval(
+          child: Image.network(
+            champion.imageUrl,
+            width: 48,
+            height: 48,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 48,
+                height: 48,
+                color: Colors.grey[800],
+                child: const Icon(Icons.person, color: Colors.grey),
+              );
+            },
+          ),
         ),
         title: Text(
           champion.name,
