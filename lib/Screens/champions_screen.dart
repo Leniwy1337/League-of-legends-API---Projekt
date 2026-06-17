@@ -29,7 +29,7 @@ class _ChampionsScreenState extends State<ChampionsScreen> {
       final localChampions = LocalDatabase.getChampions();
       if (localChampions.isEmpty) {
         throw Exception(
-          'Brak połączenia z internetem i brak zapisanych danych. Spróbuj ponownie później.',
+          'Brak połączenia z internetem, Spróbuj ponownie później.',
         );
       }
       return localChampions;
@@ -108,30 +108,52 @@ class ChampionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: const Color(0xFFC8AA6E).withOpacity(0.5),
+          width: 1,
+        ),
+      ),
       child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         onTap: onTap,
-        leading: ClipOval(
-          child: Image.network(
-            champion.imageUrl,
-            width: 48,
-            height: 48,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return Container(
-                width: 48,
-                height: 48,
-                color: Colors.grey[800],
-                child: const Icon(Icons.person, color: Colors.grey),
-              );
-            },
+        leading: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: const Color(0xFFC8AA6E), width: 2),
+          ),
+          child: ClipOval(
+            child: Image.network(
+              champion.imageUrl,
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 50,
+                  height: 50,
+                  color: Colors.grey[800],
+                  child: const Icon(Icons.person, color: Colors.grey),
+                );
+              },
+            ),
           ),
         ),
         title: Text(
           champion.name,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Color(0xFFC8AA6E),
+          ),
         ),
-        subtitle: Text(champion.title),
-        trailing: const Icon(Icons.chevron_right),
+        subtitle: Text(
+          champion.title,
+          style: TextStyle(color: Colors.grey[400]),
+        ),
+        trailing: const Icon(Icons.chevron_right, color: Color(0xFFC8AA6E)),
       ),
     );
   }

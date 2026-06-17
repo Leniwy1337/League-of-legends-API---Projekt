@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'League of Legends API',
       theme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF0A1428), // Ciemny granat
+        scaffoldBackgroundColor: const Color(0xFF0A1428),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF091428),
           elevation: 0,
           centerTitle: true,
           titleTextStyle: TextStyle(
-            color: Color(0xFFC8AA6E), // Złoty
+            color: Color(0xFFC8AA6E),
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: const ColorScheme.dark(
           primary: Color(0xFFC8AA6E),
-          surface: Color(0xFF1E2328), // Tło dla kart
+          surface: Color(0xFF1E2328),
         ),
         useMaterial3: true,
       ),
